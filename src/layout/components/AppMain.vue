@@ -1,12 +1,12 @@
 <template>
-  <div class="main-container">
+  <section class="app-container">
     <transition name="fade-transform"
                 mode="out-in">
       <keep-alive>
         <router-view :key="key" />
       </keep-alive>
     </transition>
-  </div>
+  </section>
 </template>
 
 <script lang="ts">

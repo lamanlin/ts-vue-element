@@ -15,11 +15,18 @@ export const constantRoutes: RouteConfig[] = [
         component: () => import('@/views/dashboard/index.vue'),
         name: 'Dashboard',
         meta: {
-          title: 'dashboard',
-          icon: 'dashboard'
+          title: '首页',
+          icon: 'house'
         }
       }
     ]
+  },
+  {
+    path: '/404',
+    component: () => import('@/views/404.vue'),
+    meta: {
+      hidden: true
+    }
   },
   {
     path: '/business',
@@ -27,7 +34,7 @@ export const constantRoutes: RouteConfig[] = [
     redirect: '/business/test',
     meta: {
       title: '业务',
-      icon: 'nested'
+      icon: 'tickets'
     },
     children: [
       {
@@ -46,12 +53,13 @@ export const constantRoutes: RouteConfig[] = [
         name: 'test2',
         meta: {
           title: '业务组合计啊',
-          icon: 'user',
+          icon: 'office-building',
           noCache: true
         }
       }
     ]
-  }
+  },
+  { path: '*', redirect: '/404', meta: { hidden: true } }
 ]
 
 const createRouter = () =>
