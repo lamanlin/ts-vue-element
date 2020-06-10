@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 
 import 'normalize.css/normalize.css'
+import './styles/index.less' // global css
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'

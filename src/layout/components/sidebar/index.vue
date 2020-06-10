@@ -1,27 +1,40 @@
 <template>
   <div class="side-bar">
-    <el-menu default-active="2"
-             class="el-menu-vertical-demo"
-             @open="handleOpen"
-             @close="handleClose">
-      <sidebar-item />
-    </el-menu>
+    <el-scrollbar wrap-class="scrollbar-wrapper">
+      <el-menu :show-timeout="200"
+               :default-active="$route.path"
+               mode="vertical"
+               :background-color="variables.menuBg"
+               :text-color="variables.menuText">
+        <sidebar-item v-for="route in routes"
+                      :key="route.name"
+                      :item="route"
+                      :base-path="route.path" />
+      </el-menu>
+    </el-scrollbar>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import SidebarItem from './SidebarItem.vue'
+  import { Component, Vue } from 'vue-property-decorator'
+  import SidebarItem from './SidebarItem.vue'
+  import variables from '@/styles/variables.less'
   @Component({
+    name: 'Sidebar',
     components: {
       SidebarItem
     }
   })
-export default class ClassName extends Vue {
-  private get routes (): [] {
-    return this.$router.options.routes
+  export default class ClassName extends Vue {
+    private get routes(): [] {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const router: any = this.$router
+      return router.options.routes
+    }
+    private  get variables() {
+    return variables
   }
-}
+  }
 </script>
 
 <style lang="less" scope>

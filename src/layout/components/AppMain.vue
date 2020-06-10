@@ -19,6 +19,3 @@ export default class AppMain extends Vue {
   }
 }
 </script>
-
-<style lang="less" scope>
-</style>
